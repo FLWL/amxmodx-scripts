@@ -1,6 +1,12 @@
 # amxmodx-scripts
 Collection of my AMX Mod X scripts for mainly CS 1.6.
 
+## Notable mentions
+These are the plugins I like the most, are the most significant, or otherwise important to me.
+* [paintball_mod](https://github.com/FLWL/amxmodx-scripts/tree/master/paintball/paintball_mod) - a custom paintball mod with new guns and mechanics.
+* [country_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/country_chat) - a polished in-game chat overhaul system.
+* [anti_understab](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/anti_understab) - block whats known as "understabbing" in Hide 'n' Seek mods.
+
 ## All
 * [admin_status](https://github.com/FLWL/amxmodx-scripts/tree/master/all/admin_status) - /admins and /vips commands to check who is online.
 * [anti_developer](https://github.com/FLWL/amxmodx-scripts/tree/master/all/anti_developer) - forbid players from using developer mode.
