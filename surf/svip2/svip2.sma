@@ -236,7 +236,7 @@ public clcmd_sayvipmenu(id)
 	if (get_user_flags(id) & VIP_FLAG)
 		show_menu_vip(id)
 	else
-		client_print(id, print_chat, "^1[^4Kohila^1] Sa ei ole^4 VIP^1. Tellimiseks kirjuta^4 /sms^1.")
+		client_print(id, print_chat, "^1[^4VIP^1] You are not^4 VIP^1.")
 }
 
 public message_ScoreAttrib(msg_id, msg_dest, msg_entity)
