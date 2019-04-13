@@ -1,5 +1,5 @@
 # amxmodx-scripts
-Collection of my AMX Mod X scripts for mainly CS 1.6. Currently containing 64 scripts.
+Collection of my AMX Mod X scripts for mainly CS 1.6. Currently containing 66 scripts.
 
 ## Notable mentions
 These are the plugins I like the most, are the most significant, or otherwise important to me.
@@ -13,6 +13,7 @@ These are the plugins I like the most, are the most significant, or otherwise im
 * [admin_status](https://github.com/FLWL/amxmodx-scripts/tree/master/all/admin_status) - /admins and /vips commands to check who is online.
 * [anti_developer](https://github.com/FLWL/amxmodx-scripts/tree/master/all/anti_developer) - forbid players from using developer mode.
 * [block_kill_command](https://github.com/FLWL/amxmodx-scripts/tree/master/all/block_kill_command) - don't allow players to use the kill command.
+* [bullet_sql](https://github.com/FLWL/amxmodx-scripts/tree/master/all/bullet_sql) - a plugin to let users create accounts and save their stats.
 * [country_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/country_chat) - chat overhaul.
 * [kac](https://github.com/FLWL/amxmodx-scripts/tree/master/all/kac) - a small anticheat.
 * [ping_checker](https://github.com/FLWL/amxmodx-scripts/tree/master/all/ping_checker) - remove high ping players from the server.
