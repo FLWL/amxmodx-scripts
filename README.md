@@ -5,6 +5,7 @@ Collection of my AMX Mod X scripts for mainly CS 1.6. Currently containing 64 sc
 These are the plugins I like the most, are the most significant, or otherwise important to me.
 * [paintball_mod](https://github.com/FLWL/amxmodx-scripts/tree/master/paintball/paintball_mod) - a custom paintball mod with new guns and mechanics.
 * [drmgr](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/drmgr) - a custom deathrun manager.
+* [blockmaker](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/blockmaker) - a custom blockmaker with new features.
 * [country_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/country_chat) - a polished in-game chat overhaul system.
 * [anti_understab](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/anti_understab) - block whats known as "understabbing" in Hide 'n' Seek mods.
 
@@ -37,6 +38,7 @@ These are the plugins I like the most, are the most significant, or otherwise im
 ## Hide 'n' Seek
 * [anti_understab](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/anti_understab) - block "understabbing" in Hide 'n' Seek mods.
 * [black_flashbangs](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/black_flashbangs) - change the color of flashbang grenades to black.
+* [blockmaker](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/blockmaker) - a custom blockmaker with new features.
 * [hns_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/hns_vip) - VIP plugin for HNS servers.
 * [touchdowns](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/touchdowns) - allows Ts to take down CTs by landing on top of them.
 
