@@ -1,5 +1,5 @@
 # amxmodx-scripts
-Collection of my AMX Mod X scripts for mainly CS 1.6.
+Collection of my AMX Mod X scripts for mainly CS 1.6. Currently containing 57 scripts.
 
 ## Notable mentions
 These are the plugins I like the most, are the most significant, or otherwise important to me.
