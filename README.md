@@ -57,6 +57,9 @@ These are the plugins I like the most, are the most significant, or otherwise im
 * [nozoom](https://github.com/FLWL/amxmodx-scripts/tree/master/surf/nozoom) - forbid players from using scopes on some weapons.
 * [svip2](https://github.com/FLWL/amxmodx-scripts/tree/master/surf/svip2) - surf VIP plugin.
 
+## WIP (Work-in-progress)
+* [racemod](https://github.com/FLWL/amxmodx-scripts/tree/master/wip/racemod) - a mod where players can have a race with the wacky HL engine vehicles.
+
 ## Zombie Mod
 * [zombie_plague40_xp](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zombie_plague40_xp) - a custom zombie mod based on ZP 4.3.
 * [zp50_ambience_colored_fog](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_ambience_colored_fog) - different fog colors on different round types.
