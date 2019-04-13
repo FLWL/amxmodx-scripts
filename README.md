@@ -54,8 +54,31 @@ These are the plugins I like the most, are the most significant, or otherwise im
 * [svip2](https://github.com/FLWL/amxmodx-scripts/tree/master/surf/svip2) - surf VIP plugin.
 
 ## Zombie Mod
+* [zombie_plague40_xp](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zombie_plague40_xp) - a custom zombie mod based on ZP 4.3.
+* [zp50_ambience_colored_fog](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_ambience_colored_fog) - different fog colors on different round types.
 * [zp50_auto_respawn](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_auto_respawn) - respawn newly connected players.
+* [zp50_class_human_collector](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_class_human_collector) - human class that gets half of their fired ammo back.
+* [zp50_class_zombie_healer](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_class_zombie_healer) - zombie class that can heal itself and others.
 * [zp50_effects](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_effects) - special effects library for ZP 5.0 plugins.
+* [zp50_item_defusal_kit](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_item_defusal_kit) - lets humans buy defusal kits.
+* [zp50_item_human_armor](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_item_human_armor) - lets humans buy armor.
+* [zp50_item_human_health](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_item_human_health) - lets humans buy extra health.
+* [zp50_supply_boxes](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_supply_boxes) - spawn supply boxes with goodies over the map.
+* [zp50_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_vip) - VIP plugin for ZP 5.0.
+* [zp_hclass_civilian](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_hclass_civilian) - a normal civilian human class.
+* [zp_hclass_juggernaut](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_hclass_juggernaut) - a tanky human class with slow movement.
+* [zp_hclass_kct](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_hclass_kct) - an all-around balanced special unit human class.
+* [zp_hclass_survivalist](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_hclass_survivalist) - an improved version of the civilian class.
 * [zp_item_armor_renewal](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_item_armor_renewal) - human players can buy themselves armor.
 * [zp_item_defusal_kit](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_item_defusal_kit) - human players can buy defusal kits.
+* [zp_item_hp](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_item_hp) - human players can buy extra health.
+* [zp_killstreaks](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_killstreaks) - kill streak announcements.
+* [zp_knife_dragon_glaive](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_knife_dragon_glaive) - a strong melee weapon without special abilities.
+* [zp_knife_executioners_axe](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_knife_executioners_axe) - deals more damage to weaker enemies.
+* [zp_knife_sledgehammer](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_knife_sledgehammer) - deals a lot of damage and knocks enemies back.
+* [zp_lasermine_semiclip_fix](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_lasermine_semiclip_fix) - fix bugs that arise from using lasermine and semiclip plugins together.
+* [zp_real_lighting](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_real_lighting) - sync in-game lighting to real world.
+* [zp_rewards](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_rewards) - reward players for eliminating enemies and winning rounds.
 * [zp_show_damage_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_show_damage_vip) - allows VIPs to see their damage and enemies' health.
+* [zp_zclass_ghost](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_zclass_ghost) - stealthy zombie class.
+* [zp_zclass_skeleton](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_zclass_skeleton) - the default zombie class in ZP XP.
