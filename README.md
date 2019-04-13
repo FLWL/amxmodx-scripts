@@ -1,5 +1,5 @@
 # amxmodx-scripts
-Collection of my AMX Mod X scripts for mainly CS 1.6. Currently containing 57 scripts.
+Collection of my AMX Mod X scripts for mainly CS 1.6. Currently containing 64 scripts.
 
 ## Notable mentions
 These are the plugins I like the most, are the most significant, or otherwise important to me.
@@ -80,5 +80,12 @@ These are the plugins I like the most, are the most significant, or otherwise im
 * [zp_real_lighting](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_real_lighting) - sync in-game lighting to real world.
 * [zp_rewards](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_rewards) - reward players for eliminating enemies and winning rounds.
 * [zp_show_damage_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_show_damage_vip) - allows VIPs to see their damage and enemies' health.
+* [zp_wpn_ak47_grenadier](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_ak47_grenadier) - AK-47 with a grenade launcher.
+* [zp_wpn_death_machine](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_death_machine) - a minigun.
+* [zp_wpn_dual_infinity](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_dual_infinity) - dual wieldable pistols.
+* [zp_wpn_el_diablo](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_el_diablo) - powerful pistol with a scope.
+* [zp_wpn_g18](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_g18) - an automatic pistol with a high rate of fire.
+* [zp_wpn_spas12](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_spas12) - a pump action shotgun.
+* [zp_wpn_trg42](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_wpn_trg42) - a bolt action sniper rifle.
 * [zp_zclass_ghost](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_zclass_ghost) - stealthy zombie class.
 * [zp_zclass_skeleton](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_zclass_skeleton) - the default zombie class in ZP XP.
