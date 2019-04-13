@@ -55,6 +55,7 @@ These are the plugins I like the most, are the most significant, or otherwise im
 
 ## Zombie Mod
 * [zp50_auto_respawn](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_auto_respawn) - respawn newly connected players.
+* [zp50_effects](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp50_effects) - special effects library for ZP 5.0 plugins.
 * [zp_item_armor_renewal](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_item_armor_renewal) - human players can buy themselves armor.
 * [zp_item_defusal_kit](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_item_defusal_kit) - human players can buy defusal kits.
 * [zp_show_damage_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/zombiemod/zp_show_damage_vip) - allows VIPs to see their damage and enemies' health.
