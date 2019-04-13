@@ -18,6 +18,7 @@ These are the plugins I like the most, are the most significant, or otherwise im
 * [kac](https://github.com/FLWL/amxmodx-scripts/tree/master/all/kac) - a small anticheat.
 * [ping_checker](https://github.com/FLWL/amxmodx-scripts/tree/master/all/ping_checker) - remove high ping players from the server.
 * [sms_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/sms_chat) - periodically display player submitted messages in-game.
+* [xbans](https://github.com/FLWL/amxmodx-scripts/tree/master/all/xbans) - a custom admin and ban manager inspired by AMXBans.
 
 ## Base Builder
 * [bb_class_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/basebuilder/bb_class_vip) - VIP class for base builder.
