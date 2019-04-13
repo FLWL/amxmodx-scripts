@@ -4,6 +4,7 @@ Collection of my AMX Mod X scripts for mainly CS 1.6.
 ## Notable mentions
 These are the plugins I like the most, are the most significant, or otherwise important to me.
 * [paintball_mod](https://github.com/FLWL/amxmodx-scripts/tree/master/paintball/paintball_mod) - a custom paintball mod with new guns and mechanics.
+* [drmgr](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/drmgr) - a custom deathrun manager.
 * [country_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/country_chat) - a polished in-game chat overhaul system.
 * [anti_understab](https://github.com/FLWL/amxmodx-scripts/tree/master/hidenseek/anti_understab) - block whats known as "understabbing" in Hide 'n' Seek mods.
 
@@ -14,6 +15,7 @@ These are the plugins I like the most, are the most significant, or otherwise im
 * [country_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/country_chat) - chat overhaul.
 * [kac](https://github.com/FLWL/amxmodx-scripts/tree/master/all/kac) - a small anticheat.
 * [ping_checker](https://github.com/FLWL/amxmodx-scripts/tree/master/all/ping_checker) - remove high ping players from the server.
+* [sms_chat](https://github.com/FLWL/amxmodx-scripts/tree/master/all/sms_chat) - periodically display player submitted messages in-game.
 
 ## Base Builder
 * [bb_class_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/basebuilder/bb_class_vip) - VIP class for base builder.
@@ -26,6 +28,10 @@ These are the plugins I like the most, are the most significant, or otherwise im
 
 ## Deathrun
 * [afk_kicker](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/afk_kicker) - transfer AFK players to the spectators team.
+* [dr_vip](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/dr_vip) - standalone deathrun VIP plugin.
+* [drmgr](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/drmgr) - a custom deathrun manager.
+* [unstuck](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/unstuck) - an improved version of the deathrun unstuck plugin.
+* [vip_respawn](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/vip_respawn) - allows VIPs to respawn once per round.
 * [weaponbox_fix](https://github.com/FLWL/amxmodx-scripts/tree/master/deathrun/weaponbox_fix) - stop bhop blocks from activating when touched by dropped weapons.
 
 ## Hide 'n' Seek
