@@ -197,6 +197,8 @@ enum
 	PROP_MOVING_SPEED,
 	PROP_MOVING_WAIT_BASE,
 	PROP_MOVING_WAIT_TARGET,
+	PROP_MOVING_BOUNCE,
+	PROP_MOVING_GRAVITY,
 	
 	MAX_PROPS
 }
@@ -215,7 +217,9 @@ new const PROP_KEY[MAX_PROPS][] =
 	"prop_moving_distance",
 	"prop_moving_speed",
 	"prop_moving_wait_base",
-	"prop_moving_wait_target"
+	"prop_moving_wait_target",
+	"prop_moving_bounce",
+	"prop_moving_gravity"
 }
 
 const MAX_SPECIAL_PROPS = 4
@@ -617,6 +621,7 @@ public plugin_init()
 	register_think(TELEPORT_START_CLASSNAME, "think_teleport_start")
 	register_think(TELEPORT_DEST_CLASSNAME, "think_teleport_dest")
 	register_touch("grenade", TELEPORT_START_CLASSNAME, "touch_grenade_teleport_start")
+	register_touch(BLOCK_CLASSNAME, "*", "touch_block")
 	
 	// Client Commands
 	register_clcmd("say /bm", "clcmd_saybm")
@@ -635,6 +640,8 @@ public plugin_init()
 	register_clcmd("bm_prop_moving_speed", "clcmd_bmpropmovingspeed")
 	register_clcmd("bm_prop_moving_wait_base", "clcmd_bmpropmovingwaitbase")
 	register_clcmd("bm_prop_moving_wait_target", "clcmd_bmpropmovingwaittarget")
+	register_clcmd("bm_prop_moving_bounce", "clcmd_bmpropmovingbounce")
+	register_clcmd("bm_prop_moving_gravity", "clcmd_bmpropmovinggravity")
 	register_clcmd("bm_prop_special", "clcmd_bmpropspecial")
 	register_clcmd("chooseteam", "clcmd_changeteam")
 	register_clcmd("jointeam", "clcmd_changeteam")
@@ -1250,6 +1257,34 @@ public clcmd_bmpropmovingwaittarget(id)
 	remove_quotes(msg)
 	
 	update_block_property(id, g_selected_block[id], PROP_MOVING_WAIT_TARGET, clamp(floatround(str_to_float(msg)*10), 0, 600), true)
+	show_menu_bm_props_moving(id)
+	return PLUGIN_HANDLED;
+}
+
+public clcmd_bmpropmovingbounce(id)
+{
+	if (!can_build(id) || !is_valid_ent(g_selected_block[id]) || !is_entity_block(g_selected_block[id]))
+		return PLUGIN_HANDLED;
+	
+	static msg[32]
+	read_args(msg, charsmax(msg))
+	remove_quotes(msg)
+	
+	update_block_property(id, g_selected_block[id], PROP_MOVING_BOUNCE, clamp(str_to_num(msg), 0, 9999), true)
+	show_menu_bm_props_moving(id)
+	return PLUGIN_HANDLED;
+}
+
+public clcmd_bmpropmovinggravity(id)
+{
+	if (!can_build(id) || !is_valid_ent(g_selected_block[id]) || !is_entity_block(g_selected_block[id]))
+		return PLUGIN_HANDLED;
+	
+	static msg[32]
+	read_args(msg, charsmax(msg))
+	remove_quotes(msg)
+	
+	update_block_property(id, g_selected_block[id], PROP_MOVING_GRAVITY, clamp(str_to_num(msg), 0, 1000), true)
 	show_menu_bm_props_moving(id)
 	return PLUGIN_HANDLED;
 }
@@ -2080,7 +2115,7 @@ get_formatted_sprop_value(ent, i, prop_value[], len)
 // Block Moving Properties Menu
 show_menu_bm_props_moving(id)
 {
-	static menu[250], len, canbuild, menukeys
+	static menu[512], len, canbuild, menukeys
 	len = 0
 	canbuild = can_build(id)
 	menukeys = MENU_KEY_0
@@ -2213,8 +2248,50 @@ show_menu_bm_props_moving(id)
 			len += formatex(menu[len], charsmax(menu) - len, "\d5. Wait Time (Target Position): %.1f seconds^n", float(get_property(ent, PROP_MOVING_WAIT_TARGET)) / 10.0)
 	}
 	
+	// 6. Bounce
+	static formatted_bounce_velocity[32]
+	if (get_property(ent, PROP_MOVING_BOUNCE))
+		formatex(formatted_bounce_velocity, charsmax(formatted_bounce_velocity), "%d velocity", get_property(ent, PROP_MOVING_BOUNCE))
+	else
+		formatex(formatted_bounce_velocity, charsmax(formatted_bounce_velocity), "Off")
+	
+	if (canbuild)
+	{
+		if (editing_group && !are_group_values_identical(id, ent, PROP_MOVING_BOUNCE))
+			len += formatex(menu[len], charsmax(menu) - len, "\r6.\w Bounce:\y <multiple values>^n")
+		else
+			len += formatex(menu[len], charsmax(menu) - len, "\r6.\w Bounce:\y %s^n", formatted_bounce_velocity)
+		
+		menukeys |= MENU_KEY_6
+	}
+	else
+	{
+		if (editing_group && !are_group_values_identical(id, ent, PROP_MOVING_BOUNCE))
+			len += formatex(menu[len], charsmax(menu) - len, "\d6. Bounce: <multiple values>^n")
+		else
+			len += formatex(menu[len], charsmax(menu) - len, "\d6. Bounce: %s^n", formatted_bounce_velocity)
+	}
+	
+	// 7. Gravity
+	if (canbuild)
+	{
+		if (editing_group && !are_group_values_identical(id, ent, PROP_MOVING_GRAVITY))
+			len += formatex(menu[len], charsmax(menu) - len, "\r7.\w Gravity:\y <multiple values>^n")
+		else
+			len += formatex(menu[len], charsmax(menu) - len, "\r7.\w Gravity:\y %d%%^n", get_property(ent, PROP_MOVING_GRAVITY))
+		
+		menukeys |= MENU_KEY_7
+	}
+	else
+	{
+		if (editing_group && !are_group_values_identical(id, ent, PROP_MOVING_GRAVITY))
+			len += formatex(menu[len], charsmax(menu) - len, "\d7.\w Gravity: <multiple values>^n")
+		else
+			len += formatex(menu[len], charsmax(menu) - len, "\d7.\w Gravity: %d%%^n", get_property(ent, PROP_MOVING_GRAVITY))
+	}
+	
 	// 0. Back
-	len += formatex(menu[len], charsmax(menu) - len, "^n^n^n^n\r0.\w Back")
+	len += formatex(menu[len], charsmax(menu) - len, "^n^n\r0.\w Back")
 	
 	// Fix for AMXX custom menus
 	if (pev_valid(id) == PDATA_SAFE) set_pdata_int(id, OFFSET_CSMENUCODE, 0, OFFSET_LINUX)
@@ -2910,6 +2987,16 @@ public menu_bm_props_moving(id, key)
 			client_cmd(id, "messagemode bm_prop_moving_wait_target")
 			return;
 		}
+		case 5: // 6. Bounce
+		{
+			client_cmd(id, "messagemode bm_prop_moving_bounce")
+			return;
+		}
+		case 6: // 7. Gravity
+		{
+			client_cmd(id, "messagemode bm_prop_moving_gravity")
+			return;
+		}
 		case 9: // 0. Back
 		{
 			show_menu_bm_block_props(id)
@@ -3187,6 +3274,10 @@ public pfn_touch(ent, id)
 		if (entity_get_int(ent, EV_INT_iuser2))
 			return PLUGIN_CONTINUE;
 		
+		// Entity is not supposed to be touchable (SOLID_TRIGGER is for bouncing bhop blocks for example)
+		if (entity_get_int(ent, EV_INT_solid) == SOLID_TRIGGER)
+			return PLUGIN_CONTINUE;
+		
 		static property, stuck, onground, groundent
 		property = get_property(ent, PROP_ONTOPONLY) ? true : false
 		stuck = is_stuck(id)
@@ -3326,6 +3417,9 @@ public client_PreThink(id)
 
 public think_block(ent)
 {
+	if (!is_valid_ent(ent))
+		return;
+	
 	static block_type, Float:gametime
 	block_type = entity_get_int(ent, EV_INT_body)
 	gametime = get_gametime()
@@ -3344,7 +3438,7 @@ public think_block(ent)
 				{
 					if (entity_get_int(ent, EV_INT_solid) == SOLID_BBOX)
 					{
-						entity_set_int(ent, EV_INT_solid, SOLID_NOT)
+						entity_set_int(ent, EV_INT_solid, SOLID_TRIGGER)
 						reset_block_rendering(ent)
 						
 						set_block_nextthink(ent, THINK_TYPE_NORMAL, gametime + get_special_property(ent, 1))
@@ -3360,7 +3454,7 @@ public think_block(ent)
 				{
 					if (entity_get_int(ent, EV_INT_solid) == SOLID_BBOX)
 					{
-						entity_set_int(ent, EV_INT_solid, SOLID_NOT)
+						entity_set_int(ent, EV_INT_solid, SOLID_TRIGGER)
 						reset_block_rendering(ent)
 						
 						set_block_nextthink(ent, THINK_TYPE_NORMAL, gametime + get_special_property(ent, 1))
@@ -3482,6 +3576,21 @@ public think_teleport_dest(ent)
 public touch_grenade_teleport_start(grenade_ent, teleport_start_ent)
 {
 	action_teleport(grenade_ent, teleport_start_ent) 
+}
+
+public touch_block(ent, other)
+{
+	if (!is_valid_ent(ent))
+		return;
+	
+	if (get_property(ent, PROP_MOVING_BOUNCE) && (entity_get_int(ent, EV_INT_flags) & FL_ONGROUND) && !entity_get_int(ent, EV_INT_iuser2))
+	{
+		// a bouncing block is on the ground while not grabbed - bounce it up
+		new Float:velocity[3]
+		velocity[2] = float(get_property(ent, PROP_MOVING_BOUNCE))
+		
+		entity_set_vector(ent, EV_VEC_velocity, velocity)
+	}
 }
 
 action_bhop(ent)
@@ -4010,7 +4119,8 @@ action_magic_carpet(id, ent)
 		entity_get_vector(ent, EV_VEC_vuser3, base_position)
 		entity_get_vector(ent, EV_VEC_origin, current_position)
 		
-		if (base_position[0] == current_position[0] && base_position[1] == current_position[1] && base_position[2] == current_position[2] || get_block_nextthink(ent, THINK_TYPE_MOVING) >= gametime)
+		if (base_position[0] == current_position[0] && base_position[1] == current_position[1] && base_position[2] == current_position[2] || get_block_nextthink(ent, THINK_TYPE_MOVING) >= gametime
+			|| (get_property(ent, PROP_MOVING_BOUNCE) && base_position[0] == current_position[0] && base_position[1] == current_position[1]))
 			g_magic_carpet_end[id] = gametime + duration
 		else
 			g_magic_carpet_end[id] = get_block_nextthink(ent, THINK_TYPE_NORMAL)
@@ -4235,7 +4345,7 @@ create_block(id, type, Float:originF[3], size, axis, props[MAX_PROPS] = { -1, ..
 	
 	entity_set_string(ent, EV_SZ_classname, BLOCK_CLASSNAME)
 	entity_set_int(ent, EV_INT_solid, SOLID_BBOX)
-	entity_set_int(ent, EV_INT_movetype, MOVETYPE_NONE)
+	entity_set_int(ent, EV_INT_movetype, props[PROP_MOVING_BOUNCE] ? MOVETYPE_TOSS : MOVETYPE_NONE)
 	
 	static Float:size_min[3], Float:size_max[3], Float:angles[3]
 	
@@ -4693,7 +4803,7 @@ reset_block_rendering(ent)
 	static grouper
 	grouper = entity_get_int(ent, EV_INT_iuser1)
 	
-	if (entity_get_int(ent, EV_INT_solid) == SOLID_NOT)
+	if (entity_get_int(ent, EV_INT_solid) == SOLID_TRIGGER)
 	{
 		set_rendering(ent, kRenderFxNone, 255, 255, 255, kRenderTransAlpha, get_property(ent, PROP_TRANSPARENCYACTIVE))
 	}
@@ -4726,10 +4836,34 @@ update_moving_path(ent)
 	static Float:distance
 	distance = float(get_property(ent, PROP_MOVING_DISTANCE))
 	
-	// Reset entity to it's base position before doing anything
+	// Get a moving block's base position
 	static Float:originF[3]
 	entity_get_vector(ent, EV_VEC_vuser3, originF)
+	
+	// Reset the block to its base position
 	entity_set_origin(ent, originF)
+	
+	// If bounce is set it overrides any normal movement
+	if (get_property(ent, PROP_MOVING_BOUNCE))
+	{
+		if (entity_get_int(ent, EV_INT_iuser2))
+		{
+			// grabbed
+			entity_set_int(ent, EV_INT_movetype, MOVETYPE_NONE)
+			entity_set_vector(ent, EV_VEC_velocity, Float:{0.0, 0.0, 0.0})
+		}
+		else
+		{
+			entity_set_int(ent, EV_INT_movetype, MOVETYPE_TOSS)
+			entity_set_vector(ent, EV_VEC_velocity, Float:{0.0, 0.0, -1.0})
+			entity_set_float(ent, EV_FL_gravity, float(get_property(ent, PROP_MOVING_GRAVITY)) / 100.0)
+			
+			if (entity_get_int(ent, EV_INT_flags) & FL_ONGROUND)
+				touch_block(ent, 0)
+		}
+		
+		return;
+	}
 	
 	if (distance <= 0.0 || get_property(ent, PROP_MOVING_SPEED) <= 0)
 	{
@@ -4844,7 +4978,7 @@ set_block_nextthink(ent, think_type, Float:nextthink)
 
 is_moving_block(ent)
 {
-	return (get_property(ent, PROP_MOVING_DISTANCE) > 0 && get_property(ent, PROP_MOVING_SPEED) > 0);
+	return get_property(ent, PROP_MOVING_DISTANCE) > 0 && get_property(ent, PROP_MOVING_SPEED) > 0 && !get_property(ent, PROP_MOVING_BOUNCE);
 }
 
 convert_block_by_aim(id, type, size)
@@ -6131,8 +6265,8 @@ reset_vars(id, resetall = 0)
 	
 	if (resetall)
 	{
-		g_block_type[id] = 0
-		g_block_size[id] = 1
+		g_block_type[id] = BLOCK_PLATFORM
+		g_block_size[id] = BLOCK_SIZE_NORMAL
 		g_option_snapping[id] = 1
 		g_option_snapping_gap[id] = 0
 		g_option_pushpull_speed[id] = 4
