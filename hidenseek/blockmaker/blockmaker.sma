@@ -311,7 +311,7 @@ new const Float:PROP_SPECIAL_MIN_VALUE[MAX_BLOCKS][MAX_SPECIAL_PROPS] =
 	{ 0.0, -1.0, -1.0, -1.0 }, // 6 - Ice
 	{ -1.0, -1.0, -1.0, -1.0 }, // 7 - No Fall Damage
 	{ 10.0, 200.0, 0.0, -1.0 }, // 8 - Speed Boost
-	{ 200.0, -1.0, -1.0, -1.0 }, // 9 - Trampoline
+	{ 0.0, -1.0, -1.0, -1.0 }, // 9 - Trampoline
 	{ 0.1, -1.0, -1.0, -1.0 }, // 10 - Low Gravity
 	{ 50.0, -1.0, -1.0, -1.0 }, // 11 - Honey
 	{ 0.1, 0.1, -1.0, -1.0 }, // 12 - CT Barrier
@@ -2061,6 +2061,16 @@ get_formatted_sprop_value(ent, i, prop_value[], len)
 	{
 		formatex(prop_value, len, "%s", get_special_property(ent, i) ? "Backwards" : "Forwards")
 	}
+	else if (block_type == BLOCK_TRAMPOLINE && i == 0)
+	{
+		static Float:upward_speed
+		upward_speed = get_special_property(ent, 0)
+
+		if (upward_speed < 200.0)
+			formatex(prop_value, len, "Invert Existing")
+		else
+			formatex(prop_value, len, "%.2f", upward_speed)
+	}
 	else
 	{
 		formatex(prop_value, len, "%.2f", get_special_property(ent, i))
@@ -3590,10 +3600,27 @@ action_speed_boost(id, ent)
 
 action_trampoline(id, ent)
 {
-	entity_get_vector(id, EV_VEC_velocity, g_set_velocity[id])
-	g_set_velocity[id][2] = get_special_property(ent, 0) // upward speed
-	
-	ExecuteHamB(Ham_Player_Jump, id)
+	if (get_special_property(ent, 0) < 200.0)
+	{
+		static Float:current_velocity[3]
+		entity_get_vector(id, EV_VEC_velocity, current_velocity)
+		
+		if (current_velocity[2] < -200.0)
+		{
+			// invert existing Z velocity
+			g_set_velocity[id][0] = current_velocity[0]
+			g_set_velocity[id][1] = current_velocity[1]
+			g_set_velocity[id][2] = -current_velocity[2]
+			ExecuteHamB(Ham_Player_Jump, id)
+		}
+	}
+	else
+	{
+		// predefined upward speed
+		entity_get_vector(id, EV_VEC_velocity, g_set_velocity[id])
+		g_set_velocity[id][2] = get_special_property(ent, 0)
+		ExecuteHamB(Ham_Player_Jump, id)
+	}
 }
 
 action_low_gravity(id, ent)
